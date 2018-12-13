@@ -8,9 +8,9 @@ public class RunApplication {
 
 	public static void main(String[] args) {
 		SpringApplication sa=new SpringApplication(RunApplication.class);
-		// ½ûÓÃdevToolsÈÈ²¿Êğ
+		// ç¦ç”¨devToolsçƒ­éƒ¨ç½²
 		//System.setProperty("spring.devtools.restart.enabled", "false");
-		// ½ûÓÃÃüÁîĞĞ¸ü¸Äapplication.propertiesÊôĞÔ  
+		// ç¦ç”¨å‘½ä»¤è¡Œæ›´æ”¹application.propertieså±æ€§
 		sa.setAddCommandLineProperties(false);
 		sa.run(args);
 	}
