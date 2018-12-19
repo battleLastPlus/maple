@@ -12,6 +12,8 @@
             <artifactId>maple-dao</artifactId>  
             <version>${project.version}</version>  
         </dependency>  
+        
+      
     </dependencies>  
   <build/>
 </project>
