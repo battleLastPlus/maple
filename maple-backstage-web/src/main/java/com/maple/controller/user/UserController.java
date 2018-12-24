@@ -27,7 +27,7 @@ public class UserController {
 		User user = userService.queryById(1);
 		logger.info(user.getUsername());
 		
-		return "/test";
+		return "login";
 	}
 	
 	@RequestMapping("/insertUser")
@@ -37,6 +37,6 @@ public class UserController {
 		user.setEmail("1212");
 		int index = userService.insertUser(user);
 		System.out.println(index);
-		return "/test";
+		return "test";
 	}
 }

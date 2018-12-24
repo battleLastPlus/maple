@@ -22,4 +22,6 @@ public interface UserMapper {
     @Select("select * from user where id = 1")
 
     public User queryById(@Param("id") Integer id);
+    
+    
 }

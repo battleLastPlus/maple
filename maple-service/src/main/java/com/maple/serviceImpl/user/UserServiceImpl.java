@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService{
 	 */
 	public User queryById(Integer id) {
 		// TODO Auto-generated method stub
-		System.out.println(333);
+		System.out.println(11111);
 		logger.warn("test");
 		logger.error("tttt");
 		logger.info("xxx");
@@ -40,10 +40,6 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	public int insertUser(User user) {
 		int index = userMapper.insert(user);
-		System.out.println(index);
-		
-		StringBuffer a= null;
-		a.toString();
 		return index;
 	}
 
