@@ -1,5 +1,7 @@
 package com.maple.serviceImpl.user;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,9 @@ import com.maple.service.user.UserService;
 @Service
 public class UserServiceImpl implements UserService{
 
+	private static final Logger logger = LoggerFactory
+			.getLogger(UserServiceImpl.class);
+	
 	@Autowired
 	private UserMapper userMapper;
 	
@@ -26,6 +31,9 @@ public class UserServiceImpl implements UserService{
 	public User queryById(Integer id) {
 		// TODO Auto-generated method stub
 		System.out.println(333);
+		logger.warn("test");
+		logger.error("tttt");
+		logger.info("xxx");
 		return userMapper.queryById(id);
 	}
 	
