@@ -16,15 +16,11 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 /**
- * @项目名称：wyait-common
- * @包名：com.wyait.manage.config
  * @类描述：数据源配置
- * @创建人：wyait
- * @创建时间：2018-02-27 13:33
- * @version：V1.0
+ * @创建人：maple
  */
 @Configuration
-//指明了扫描dao层，并且给dao层注入指定的SqlSessionTemplate  com.promise.actual.**.dao
+//指明了扫描dao层，并且给dao层注入指定的SqlSessionTemplate 
 @MapperScan(basePackages = "com.maple.**.dao", sqlSessionTemplateRef  = "mapleSqlSessionTemplate")
 public class DataSourceConfig {
 	/**
@@ -51,7 +47,7 @@ public class DataSourceConfig {
 		bean.setDataSource(dataSource);
 		//对应mybatis.type-aliases-package配置
 		bean.setTypeAliasesPackage("com.maple.**.pojo");
-		//对应mybatis.mapper-locations配置   classpath*:com/promise/actual/**/*Mapper.xml
+		//对应mybatis.mapper-locations配置  
 		bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:com/maple/mapper/**/*Mapper.xml"));
 		//开启驼峰映射
 		bean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
