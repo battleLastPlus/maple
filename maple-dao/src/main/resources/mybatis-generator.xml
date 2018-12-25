@@ -35,7 +35,7 @@
              <property name="enableSubPackages" value="true"/>
          </javaClientGenerator>
  		<!-- 数据库里面的表名信息和配置，多张表需要配置多条信息 -->
- 		<table tableName="user" domainObjectName="User"
+ 		<table tableName="role_permission" domainObjectName="RolePermission"
                 enableCountByExample="false" enableUpdateByExample="false"
                 enableDeleteByExample="false" enableSelectByExample="false"
                 selectByExampleQueryId="false">
