@@ -1,5 +1,7 @@
 package com.maple.dao.user;
 
+import java.util.List;
+
 import com.maple.pojo.user.RolePermissionKey;
 
 public interface RolePermissionMapper {
@@ -8,4 +10,6 @@ public interface RolePermissionMapper {
     int insert(RolePermissionKey record);
 
     int insertSelective(RolePermissionKey record);
+    
+    List<RolePermissionKey> findByRole(int roleId);
 }

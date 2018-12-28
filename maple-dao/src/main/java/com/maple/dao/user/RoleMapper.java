@@ -1,5 +1,8 @@
 package com.maple.dao.user;
 
+import java.util.List;
+
+import com.maple.entity.user.RoleVO;
 import com.maple.pojo.user.Role;
 
 public interface RoleMapper {
@@ -14,4 +17,27 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+    
+    
+    /**
+      * 分页查询所有的角色列表
+     * @return
+     */
+	List<Role> findList();
+
+	/**
+	 * 获取角色相关的数据
+	 * @param id
+	 * @return
+	 */
+	RoleVO findRoleAndPerms(Integer id);
+
+	/**
+	 * 根据用户id获取角色数据
+	 * @param userId
+	 * @return
+	 */
+	List<Role> getRoleByUserId(Integer userId);
+
+	List<Role> getRoles();
 }

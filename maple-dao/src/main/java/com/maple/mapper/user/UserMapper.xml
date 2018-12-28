@@ -185,4 +185,146 @@
       version = #{version,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  <!--=Start getUsers 分页查询用户列表userSearch -->
+	<select id="getUsers" resultType="com.wyait.manage.entity.UserRoleDTO">
+		select
+		id, username, mobile, email, insert_uid, insert_time,
+		update_time,
+		is_del,is_job,version
+		from user
+		<where>
+			<if test="userSearch.umobile!=null and userSearch.umobile!=''">
+				AND mobile =#{userSearch.umobile}
+			</if>
+			<if test="userSearch.uname!=null and userSearch.uname!=''">
+				AND username like CONCAT(CONCAT('%',#{userSearch.uname}),
+				'%')
+			</if>
+			<if
+				test="userSearch.insertTimeStart!=null and userSearch.insertTimeStart!=''">
+				AND insert_time &gt;= #{userSearch.insertTimeStart}
+			</if>
+			<if test="userSearch.insertTimeEnd!=null and userSearch.insertTimeEnd!=''">
+				AND insert_time &lt;= #{userSearch.insertTimeEnd}
+			</if>
+		</where>
+		ORDER BY insert_time DESC
+	</select>
+	<!--=End getUsers 分页查询用户列表 -->
+
+	<!--=Start setJobUser 设置用户是否离职 -->
+	<update id="setJobUser">
+		update user
+		set
+		is_job = #{isJob,jdbcType=INTEGER},
+		insert_uid = #{insertUid,jdbcType=INTEGER},
+		update_time=NOW(),
+		version=version+1
+		where id =
+		#{id,jdbcType=INTEGER} AND is_del=0
+	</update>
+	<!--=Start setJobUser 设置用户是否离职 -->
+
+	<!--=Start setDelUser 删除用户 -->
+	<update id="setDelUser">
+		update user
+		set
+		is_del = #{isDel,jdbcType=INTEGER},
+		insert_uid = #{insertUid,jdbcType=INTEGER},
+		update_time=NOW(),
+		version=version + 1
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+	<!--=Start setDelUser 删除用户 -->
+
+	<!--=Start getUserAndRoles 查询用户及他对应的角色ids -->
+	<resultMap id="getUserRoles" type="com.wyait.manage.entity.UserRolesVO">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="insert_uid" jdbcType="INTEGER" property="insertUid" />
+		<result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="is_del" jdbcType="BIT" property="isDel" />
+		<result column="is_job" jdbcType="BIT" property="isJob" />
+		<result column="version" jdbcType="INTEGER" property="version" />
+
+		<collection property="userRoles" ofType="com.wyait.manage.pojo.UserRoleKey">
+			<result column="user_id" property="userId" />
+			<result column="role_id" property="roleId" />
+		</collection>
+
+	</resultMap>
+	<select id="getUserAndRoles" resultMap="getUserRoles">
+		select
+		u.id, u.username,
+		u.mobile, u.email, u.insert_uid insertUid,u.insert_time
+		insertTime,
+		u.update_time updateTime, u.is_del isDel,u.is_job isJob,u.version,
+		ur.user_id,ur.role_id
+		from user u
+		LEFT JOIN user_role ur ON
+		u.id=ur.user_id
+		WHERE u.id=#{id} AND u.is_del=0 and u.is_job=0
+	</select>
+	<!--=End getUserAndRoles 查询用户及他对应的角色ids -->
+
+	<!--=Start findUser 根据用户名和密码查找用户 -->
+	<select id="findUser" resultType="com.wyait.manage.pojo.User">
+		select
+		id, username, mobile,
+		email, insert_uid insertUid, insert_time
+		insertTime, update_time
+		updateTime, is_del isDel,is_job
+		isJob,mcode,send_time sendTime,version
+		from user
+		WHERE username=#{username} AND password =#{password} and
+		is_del=0 and
+		is_job=0
+	</select>
+	<!--=End findUser 根据用户名和密码查找用户 -->
+	<!--=Start findUserByMobile 根据手机号获取用户数据 -->
+	<select id="findUserByMobile" resultType="com.wyait.manage.pojo.User">
+		select
+		id, username,
+		mobile,password, email, insert_uid insertUid, insert_time
+		insertTime,
+		update_time, is_del,is_job,mcode,send_time sendTime,version
+		from user
+		WHERE
+		mobile=#{mobile} and is_del=0
+	</select>
+	<!--=End findUserByMobile 根据手机号查找用户 -->
+	<!--=Start findUserByName 根据用户名获取用户数据 -->
+	<select id="findUserByName" resultType="com.wyait.manage.pojo.User">
+		select
+		id, username,
+		mobile, email, insert_uid insertUid, insert_time
+		insertTime,
+		update_time updateTime, is_del isDel,is_job
+		isJob,mcode,send_time
+		sendTime,version
+		from user
+		WHERE username=#{username} and is_del=0
+	</select>
+	<!--=End findUserByName 根据用户名查找用户 -->
+	<!--=Start updatePwd 修改用户密码 -->
+	<update id="updatePwd">
+		update user
+		set
+		password = #{password},
+		update_time=NOW()
+		where id = #{id,jdbcType=INTEGER} and is_del=0 AND
+		is_job=0
+	</update>
+	<!--=Start updatePwd 修改用户密码 -->
+	<!--=Start setUserLockNum 锁定用户 -->
+	<!-- <update id="setUserLockNum"> update user set is_lock = #{isLock}, lock_time=NOW() 
+		where id = #{id,jdbcType=INTEGER} and is_del=0 AND is_job=0 </update> -->
+	<!--=Start setUserLockNum 锁定用户 -->
 </mapper>

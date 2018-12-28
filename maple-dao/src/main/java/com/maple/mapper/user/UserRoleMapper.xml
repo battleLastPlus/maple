@@ -33,4 +33,12 @@
       </if>
     </trim>
   </insert>
+  
+  <!--=Start findByUserId 根据用户获取用户角色中间表 -->
+  <select id="findByUserId" resultType="UserRoleKey">
+    SELECT
+    user_id,role_id
+    FROM user_role WHERE user_id=#{userId}
+  </select>
+  <!--= End findByUserId 根据用户获取用户角色中间表 -->
 </mapper>
