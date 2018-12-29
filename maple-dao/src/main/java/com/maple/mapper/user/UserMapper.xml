@@ -189,7 +189,7 @@
   
   
   <!--=Start getUsers 分页查询用户列表userSearch -->
-	<select id="getUsers" resultType="com.wyait.manage.entity.UserRoleDTO">
+	<select id="getUsers" resultType="com.maple.entity.user.UserRoleDTO">
 		select
 		id, username, mobile, email, insert_uid, insert_time,
 		update_time,
@@ -242,7 +242,7 @@
 	<!--=Start setDelUser 删除用户 -->
 
 	<!--=Start getUserAndRoles 查询用户及他对应的角色ids -->
-	<resultMap id="getUserRoles" type="com.wyait.manage.entity.UserRolesVO">
+	<resultMap id="getUserRoles" type="com.maple.entity.user.UserRolesVO">
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="username" jdbcType="VARCHAR" property="username" />
 		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
@@ -275,7 +275,7 @@
 	<!--=End getUserAndRoles 查询用户及他对应的角色ids -->
 
 	<!--=Start findUser 根据用户名和密码查找用户 -->
-	<select id="findUser" resultType="com.wyait.manage.pojo.User">
+	<select id="findUser" resultType="com.maple.pojo.user.User">
 		select
 		id, username, mobile,
 		email, insert_uid insertUid, insert_time
@@ -289,7 +289,7 @@
 	</select>
 	<!--=End findUser 根据用户名和密码查找用户 -->
 	<!--=Start findUserByMobile 根据手机号获取用户数据 -->
-	<select id="findUserByMobile" resultType="com.wyait.manage.pojo.User">
+	<select id="findUserByMobile" resultType="com.maple.pojo.user.User">
 		select
 		id, username,
 		mobile,password, email, insert_uid insertUid, insert_time
@@ -301,7 +301,7 @@
 	</select>
 	<!--=End findUserByMobile 根据手机号查找用户 -->
 	<!--=Start findUserByName 根据用户名获取用户数据 -->
-	<select id="findUserByName" resultType="com.wyait.manage.pojo.User">
+	<select id="findUserByName" resultType="com.maple.pojo.user.User">
 		select
 		id, username,
 		mobile, email, insert_uid insertUid, insert_time

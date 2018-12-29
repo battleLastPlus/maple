@@ -125,14 +125,14 @@
   <!--=End findList 分页查询角色列表-->
 
   <!--=Start findRoleAndPerms 查询角色列表-->
-  <resultMap id="rolePerms" type="com.wyait.manage.entity.RoleVO" >
+  <resultMap id="rolePerms" type="com.maple.entity.user.RoleVO" >
     <id column="id" property="id" />
     <result column="role_name" property="roleName"/>
     <result column="code" property="code"/>
     <result column="descpt" property="descpt"/>
     <result column="insert_uid" property="insertUid"/>
     <result column="insert_time" property="insertTime"/>
-    <collection property="rolePerms" ofType="com.wyait.manage.pojo.RolePermissionKey">
+    <collection property="rolePerms" ofType="com.maple.pojo.user.RolePermissionKey">
       <result  column="role_id" property="roleId"/>
       <result column="permit_id" property="permitId"/>
     </collection>
