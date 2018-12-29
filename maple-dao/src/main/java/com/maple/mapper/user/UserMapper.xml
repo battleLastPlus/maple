@@ -254,7 +254,7 @@
 		<result column="is_job" jdbcType="BIT" property="isJob" />
 		<result column="version" jdbcType="INTEGER" property="version" />
 
-		<collection property="userRoles" ofType="com.wyait.manage.pojo.UserRoleKey">
+		<collection property="userRoles" ofType="com.maple.pojo.user.UserRoleKey">
 			<result column="user_id" property="userId" />
 			<result column="role_id" property="roleId" />
 		</collection>

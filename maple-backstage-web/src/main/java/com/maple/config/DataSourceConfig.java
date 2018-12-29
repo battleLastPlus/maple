@@ -46,7 +46,7 @@ public class DataSourceConfig {
 		SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
 		bean.setDataSource(dataSource);
 		//对应mybatis.type-aliases-package配置
-		bean.setTypeAliasesPackage("com.maple.**.pojo");
+		bean.setTypeAliasesPackage("com.maple.pojo.*");
 		//对应mybatis.mapper-locations配置  
 		bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:com/maple/mapper/**/*Mapper.xml"));
 		//开启驼峰映射
