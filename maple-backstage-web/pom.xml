@@ -20,7 +20,25 @@
             <version>${project.version}</version>  
         </dependency>  
         
+        <dependency>  
+            <groupId>com.openhtmltopdf</groupId>  
+            <artifactId>openhtmltopdf-core</artifactId>  
+            <version>0.0.1-RC17</version>  
+        </dependency>  
         
+        <dependency>  
+            <groupId>com.openhtmltopdf</groupId>  
+            <artifactId>openhtmltopdf-java2d</artifactId>  
+            <version>0.0.1-RC17</version>  
+        </dependency> 
+        
+        <dependency>  
+            <groupId>com.openhtmltopdf</groupId>  
+            <artifactId>openhtmltopdf-svg-support</artifactId>  
+            <version>0.0.1-RC17</version>  
+        </dependency> 
+        
+  	
         <!--thymeleaf依赖-->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
