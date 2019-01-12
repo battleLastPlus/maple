@@ -22,4 +22,11 @@ public class IndexController {
 		logger.debug("===111-------------login------------");
 		return "login";
 	}
+	
+	
+	@RequestMapping("/home")
+	public String toHome() {
+		logger.debug("===111-------------home------------");
+		return "home";
+	}
 }
