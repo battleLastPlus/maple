@@ -13,6 +13,18 @@ import com.maple.pojo.user.User;
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
+	int insert(User record);
+
+	int insertSelective(User record);
+
+	User selectByPrimaryKey(Integer id);
+
+	int updateByPrimaryKeySelective(User record);
+
+	int updateByPrimaryKey(User record);
+
+	int deleteByPrimaryKey(Integer id);
+
     int insert(User record);
 
     int insertSelective(User record);
@@ -70,14 +82,14 @@ public interface UserMapper {
 			@Param("password") String password);
 
 	/**
-	 *	根据手机号获取用户数据
+	 *	根据手机号获取用户数�?
 	 * @param mobile
 	 * @return
 	 */
 	User findUserByMobile(String mobile);
 
 	/**
-	 * 根据用户名获取用户数据
+	 * 根据用户名获取用户数�?
 	 * @param username
 	 * @return
 	 */
